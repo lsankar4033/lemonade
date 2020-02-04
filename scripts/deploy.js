@@ -1,18 +1,18 @@
 // We require the Buidler Runtime Environment explicitly here. This is optional
 // when running the script with `buidler run <script>`: you'll find the Buidler
 // Runtime Environment's members available as global variable in that case.
-const env = require("@nomiclabs/buidler");
+const bre = require("@nomiclabs/buidler");
 
 async function main() {
   // You can run Buidler tasks from a script.
   // For example, we make sure everything is compiled by running "compile"
-  await env.run("compile");
+  await bre.run("compile");
 
   // We require the artifacts once our contracts are compiled
-  const Greeter = env.artifacts.require("Greeter");
-  const greeter = await Greeter.new("Hello, world!");
+  const Lemonade = bre.artifacts.require("Lemonade");
+  const lemonade = await Lemonade.new();
 
-  console.log("Greeter address:", greeter.address);
+  console.log("Lemonade address:", greeter.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -1,13 +1,11 @@
+usePlugin("@nomiclabs/buidler-solhint");
 usePlugin("@nomiclabs/buidler-truffle5");
+usePlugin("@nomiclabs/buidler-ethers");
+usePlugin("@nomiclabs/buidler-ganache");
 
-// This is a sample Buidler task. To learn how to create your own go to
-// https://buidler.dev/guides/create-task.html
-task("accounts", "Prints the list of accounts", async () => {
-  const accounts = await web3.eth.getAccounts();
-
-  for (const account of accounts) {
-    console.log(account);
+module.exports = {
+  defaultNetwork: "localhost", // NOTE: until buidlerevm can be exposed to multiple services
+  solc: {
+    version: "0.6.2"
   }
-});
-
-module.exports = {};
+};
