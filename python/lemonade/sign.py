@@ -20,7 +20,6 @@ def pack_data(nonce, val):
 def sign_data(packed_data, privkey=ganache_privkey):
     signable_message = encode_defunct(primitive=packed_data)
 
-    # TODO: not the right format!
     signed = w3.eth.account.sign_message(signable_message, private_key=privkey)
     return (
         Web3.toHex(signed.messageHash),
@@ -28,3 +27,8 @@ def sign_data(packed_data, privkey=ganache_privkey):
         to_32byte_hex(signed.r),
         to_32byte_hex(signed.s)
     )
+
+
+def get_signed_data(nonce, val, privkey=ganache_privkey):
+    pd = pack_data(nonce, val)
+    return sign_data(pd, privkey)
