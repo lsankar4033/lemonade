@@ -27,10 +27,6 @@ contract Lemonade {
         return address(this).balance >= val;
     }
 
-    function check_balance() public view returns (uint256) {
-        return address(this).balance;
-    }
-
     function check_signature(uint128 nonce, uint128 val, uint8 v, bytes32 r, bytes32 s) public view returns (bool) {
         bytes32 hash = create_prefixed_hash(nonce, val);
         address signer = ecrecover(hash, v, r, s);
@@ -46,10 +42,6 @@ contract Lemonade {
         bytes32 prefixedHash = keccak256(message);
 
         return prefixedHash;
-    }
-
-    function withdraw() external {
-        msg.sender.transfer(address(this).balance);
     }
 
     receive() external payable {
